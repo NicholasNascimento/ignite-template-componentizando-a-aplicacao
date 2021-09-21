@@ -1,8 +1,11 @@
-import { useCineMovies } from "../CineContext";
+import { useContext } from "react";
+import { CineContext } from "../DataContext";
 import { Button } from "./Button";
 
-export function SideBar() {
-  const {genres, selectedGenreId, handleClickButton} = useCineMovies();
+export function SideBar() { 
+  const context = useContext(CineContext)
+
+  const {genres, selectedGenreId, handleClickButton} = context;
 
   return (
     <nav className="sidebar">

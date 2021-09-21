@@ -1,8 +1,11 @@
-import { useCineMovies } from "../CineContext";
+import { useContext } from "react";
+import { CineContext } from "../DataContext";
 import { MovieCard } from "./MovieCard";
 
 export function Content() {
-  const {movies, selectedGenre} = useCineMovies();
+  const context = useContext(CineContext)
+
+  const {movies, selectedGenre} = context;
 
   return (
     <div className="container">

@@ -1,7 +1,7 @@
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 import { api } from './services/api';
 
-const CineContext = createContext<CineMoviesContext>({} as CineMoviesContext)
+export const CineContext = createContext<CineMoviesContext>({} as CineMoviesContext)
 
 interface GenreResponseProps {
     id: number;
@@ -36,9 +36,7 @@ interface GenreResponseProps {
 
 export function CineProvider({children}:CineProviderProps) {
   const [selectedGenreId, setSelectedGenreId] = useState(1);
-
   const [genres, setGenres] = useState<GenreResponseProps[]>([]);
-
   const [movies, setMovies] = useState<MovieProps[]>([]);
   const [selectedGenre, setSelectedGenre] = useState<GenreResponseProps>({} as GenreResponseProps);
 
@@ -67,10 +65,4 @@ export function CineProvider({children}:CineProviderProps) {
           {children}
       </CineContext.Provider>
   )
-}
-
-export function useCineMovies() {
-    const context = useContext(CineContext)
-
-    return (context);
 }
